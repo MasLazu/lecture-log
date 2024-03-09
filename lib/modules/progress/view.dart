@@ -110,22 +110,22 @@ class ProgressView extends StatelessWidget {
                     const SizedBox(width: 8),
                     Obx(
                       () => dropdown(
-                        <String>['All types', 'Study plan', 'Assignments'],
-                        controller.selectedSTypeFilter.value,
+                        <String>['All priority', 'Urgent', 'Normal'],
+                        controller.selectedPriorityFilter.value,
                         (value) {
-                          controller.selectedSTypeFilter.value =
-                              value ?? 'All types';
+                          controller.selectedPriorityFilter.value =
+                              value ?? 'All priority';
                         },
                       ),
                     ),
                     const SizedBox(width: 8),
                     Obx(
                       () => dropdown(
-                        <String>['All priority', 'Urgent', 'Normal'],
-                        controller.selectedPriorityFilter.value,
+                        <String>['All types', 'Study plan', 'Assignments'],
+                        controller.selectedSTypeFilter.value,
                         (value) {
-                          controller.selectedPriorityFilter.value =
-                              value ?? 'All priority';
+                          controller.selectedSTypeFilter.value =
+                              value ?? 'All types';
                         },
                       ),
                     ),
@@ -148,22 +148,24 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: dummyData.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      TaskCard(
-                        subject: dummyData[index]['subject'],
-                        description: dummyData[index]['description'],
-                        icon: dummyData[index]['icon'],
-                        color: dummyData[index]['color'],
-                      ),
-                      const SizedBox(height: 8),
-                    ],
-                  );
-                },
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: dummyData.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        TaskCard(
+                          subject: dummyData[index]['subject'],
+                          description: dummyData[index]['description'],
+                          icon: dummyData[index]['icon'],
+                          color: dummyData[index]['color'],
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                    );
+                  },
+                ),
               ),
             ],
           ),

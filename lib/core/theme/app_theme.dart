@@ -12,11 +12,11 @@ class AppTheme {
         fontFamily: GoogleFonts.inter().fontFamily,
         textTheme: TextTheme(
           displayLarge: GoogleFonts.inter(
-              fontSize: 95, fontWeight: FontWeight.w300, letterSpacing: -1.5),
+              fontSize: 56, fontWeight: FontWeight.bold, letterSpacing: -1.5),
           displayMedium: GoogleFonts.inter(
-              fontSize: 59, fontWeight: FontWeight.w300, letterSpacing: -0.5),
+              fontSize: 42, fontWeight: FontWeight.bold, letterSpacing: -0.5),
           displaySmall:
-              GoogleFonts.inter(fontSize: 48, fontWeight: FontWeight.w400),
+              GoogleFonts.inter(fontSize: 36, fontWeight: FontWeight.bold),
           headlineMedium: GoogleFonts.inter(
               fontSize: 34, fontWeight: FontWeight.w400, letterSpacing: 0.25),
           headlineSmall:

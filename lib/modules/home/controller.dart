@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lecture_log/modules/account/view.dart';
 import 'package:lecture_log/modules/dashboard/view.dart';
 import 'package:lecture_log/modules/progress/controller.dart';
 import 'package:lecture_log/modules/progress/view.dart';
@@ -19,11 +20,7 @@ class HomeController extends GetxController {
         ),
       ),
       ProgressView(),
-      const Center(
-        child: Text(
-          'Index 3: Account',
-        ),
-      ),
+      const AccountView(),
     ];
   }
 
