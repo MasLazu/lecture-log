@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lecture_log/core/theme/styles.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:lecture_log/widgets/home/category_card.dart';
-import 'package:lecture_log/widgets/home/daily_progress.dart';
+import 'package:lecture_log/widgets/dashboard/category_card.dart';
+import 'package:lecture_log/widgets/dashboard/daily_progress.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -41,7 +41,9 @@ class DashboardView extends StatelessWidget {
                       child: const Text(
                         'Academic',
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -61,8 +63,14 @@ class DashboardView extends StatelessWidget {
                 const SizedBox(height: 20),
                 const DailyProgress(progress: 0.76),
                 const SizedBox(height: 32),
-                Text('Categoies', style: Theme.of(context).textTheme.bodyLarge),
-                const SizedBox(height: 4),
+                Text(
+                  'Categoies',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
                 Column(
                   children: [
                     Row(

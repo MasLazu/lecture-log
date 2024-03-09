@@ -110,7 +110,7 @@ class ProgressView extends StatelessWidget {
                     const SizedBox(width: 8),
                     Obx(
                       () => dropdown(
-                        <String>['All priority', 'Urgent', 'Normal'],
+                        <String>['All priorities', 'Urgent', 'Normal'],
                         controller.selectedPriorityFilter.value,
                         (value) {
                           controller.selectedPriorityFilter.value =
@@ -169,6 +169,15 @@ class ProgressView extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Styles.primaryColor,
+        onPressed: () {},
+        child: const Icon(
+          Iconsax.add_outline,
+          color: Colors.white,
+          size: 28,
         ),
       ),
     );

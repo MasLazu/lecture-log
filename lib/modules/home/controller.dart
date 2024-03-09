@@ -4,6 +4,7 @@ import 'package:lecture_log/modules/account/view.dart';
 import 'package:lecture_log/modules/dashboard/view.dart';
 import 'package:lecture_log/modules/progress/controller.dart';
 import 'package:lecture_log/modules/progress/view.dart';
+import 'package:lecture_log/modules/subjects/view.dart';
 
 class HomeController extends GetxController {
   final RxInt selectedIndex = 0.obs;
@@ -14,11 +15,7 @@ class HomeController extends GetxController {
     Get.put(ProgressController());
     _tabContents = <Widget>[
       const DashboardView(),
-      const Center(
-        child: Text(
-          'Index 1: Subjects',
-        ),
-      ),
+      SubjectsView(),
       ProgressView(),
       const AccountView(),
     ];
