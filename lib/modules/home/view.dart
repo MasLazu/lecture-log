@@ -7,7 +7,7 @@ import 'package:lecture_log/modules/home/controller.dart';
 class HomeView extends StatelessWidget {
   HomeView({super.key});
 
-  final controller = Get.put(HomeController());
+  final controller = Get.find<HomeController>();
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
