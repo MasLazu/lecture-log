@@ -67,7 +67,7 @@ class DashboardView extends StatelessWidget {
                   'Categoies',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyLarge!
+                      .titleLarge!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),

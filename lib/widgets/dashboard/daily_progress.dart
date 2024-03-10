@@ -30,7 +30,7 @@ class DailyProgress extends StatelessWidget {
               'Daily progress',
               style: Theme.of(context)
                   .textTheme
-                  .bodyLarge!
+                  .titleLarge!
                   .copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
@@ -39,7 +39,7 @@ class DailyProgress extends StatelessWidget {
               style: TextStyle(
                 color: Styles.secondaryForegroundColor,
                 fontWeight: FontWeight.w400,
-                fontSize: 12,
+                fontSize: 14,
               ),
             ),
             const SizedBox(height: 20),

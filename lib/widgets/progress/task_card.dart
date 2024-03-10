@@ -48,6 +48,7 @@ class TaskCard extends StatelessWidget {
                     children: [
                       Text(
                         subject,
+                        overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),

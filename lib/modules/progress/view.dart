@@ -22,14 +22,7 @@ class ProgressView extends StatelessWidget {
       'description':
           'Mengerjakan tugas cloud computing lorem ipsum dolor sit amet',
       'icon': Iconsax.clipboard_text_bold,
-      'color': Styles.primaryColor,
-    },
-    {
-      'subject': 'Pemrograman Web',
-      'description':
-          'Mengerjakan tugas membuat website lorem ipsum dolor sit amet',
-      'icon': Iconsax.clipboard_text_bold,
-      'color': Styles.primaryColor,
+      'color': Styles.warningColor,
     },
     {
       'subject': 'Aplikasi Mobile',
@@ -37,6 +30,13 @@ class ProgressView extends StatelessWidget {
           'Belajar membuat aplikasi mobile lorem ipsum dolor sit amet',
       'icon': Iconsax.tick_circle_bold,
       'color': Styles.secondaryColor,
+    },
+    {
+      'subject': 'Pemrograman Web',
+      'description':
+          'Mengerjakan tugas membuat website lorem ipsum dolor sit amet',
+      'icon': Iconsax.clipboard_text_bold,
+      'color': Styles.warningColor,
     },
   ];
 
