@@ -1,3 +1,6 @@
+import 'package:get/get.dart';
+import 'package:lecture_log/data/repository/local/note_repository.dart';
+import 'package:lecture_log/data/repository/local/subject_repository.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -19,8 +22,8 @@ class DatabaseService {
       version: 1,
       singleInstance: true,
       onCreate: (Database db, int version) async {
-        await db.execute(
-            'CREATE TABLE my_table (id INTEGER PRIMARY KEY, name TEXT)');
+        Get.find<SubjectRepository>().createTable(db);
+        Get.find<NoteRepository>().createTable(db);
       },
     );
   }

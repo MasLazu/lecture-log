@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:lecture_log/core/theme/styles.dart';
+import 'package:lecture_log/data/model/subject.dart';
+import 'package:lecture_log/data/repository/local/subject_repository.dart';
 import 'package:lecture_log/widgets/subjects/subject_overview.dart';
 
 class SubjectsView extends StatelessWidget {
@@ -85,7 +88,26 @@ class SubjectsView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Styles.primaryColor,
-        onPressed: () {},
+        onPressed: () {
+          SubjectRepository subjectRepository = Get.find<SubjectRepository>();
+          subjectRepository.insert(
+            Subject(
+              name: 'Administrasi Jaringan',
+              description:
+                  'lorem ipsum dolor sit amet consectetur adipiscing elit',
+              color: Styles.successColor,
+              start: const TimeOfDay(hour: 8, minute: 0),
+              end: const TimeOfDay(hour: 9, minute: 40),
+              location: 'HH-103',
+              day: 1,
+            ),
+          );
+          subjectRepository.getAll().then((value) {
+            for (var subject in value) {
+              print(subject.toJson());
+            }
+          });
+        },
         child: const Icon(
           Iconsax.add_outline,
           color: Colors.white,

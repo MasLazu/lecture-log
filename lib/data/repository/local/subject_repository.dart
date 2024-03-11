@@ -9,18 +9,19 @@ class SubjectRepository {
     await db.execute('''
       CREATE TABLE $tableName (
         id INTEGER,
-        name VARCHAR(32) NOT NULL,
+        name TEXT NOT NULL,
         description TEXT,
+        day int NOT NULL,
         start TEXT NOT NULL,
         end TEXT NOT NULL,
-        location VARCHAR(32) NOT NULL,
-        color VARCHAR(6) NOT NULL,
+        location TEXT NOT NULL,
+        color int NOT NULL,
         PRIMARY KEY (id AUTOINCREMENT)
       )
     ''');
   }
 
-  Future<int> insert(Database db, Subject subject) async {
+  Future<int> insert(Subject subject) async {
     return await (await DatabaseService().database)
         .insert(tableName, subject.toMap());
   }
