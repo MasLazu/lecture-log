@@ -18,7 +18,7 @@ class StudyPlan {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'subjectId': subjectId,
+      'subject_id': subjectId,
       'date': date.millisecondsSinceEpoch,
       'alarm': alarm,
       'notification': notification,
@@ -28,7 +28,7 @@ class StudyPlan {
   factory StudyPlan.fromMap(Map<String, dynamic> map) {
     return StudyPlan(
       id: map['id'] as int,
-      subjectId: map['subjectId'] as int,
+      subjectId: map['subject_id'] as int,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
       alarm: map['alarm'] as bool,
       notification: map['notification'] as bool,

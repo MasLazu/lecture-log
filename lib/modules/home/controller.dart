@@ -4,6 +4,7 @@ import 'package:lecture_log/modules/account/view.dart';
 import 'package:lecture_log/modules/dashboard/view.dart';
 import 'package:lecture_log/modules/progress/controller.dart';
 import 'package:lecture_log/modules/progress/view.dart';
+import 'package:lecture_log/modules/subjects/controller.dart';
 import 'package:lecture_log/modules/subjects/view.dart';
 
 class HomeController extends GetxController {
@@ -13,6 +14,8 @@ class HomeController extends GetxController {
 
   HomeController() {
     Get.put(ProgressController());
+    Get.put(SubjectsController());
+
     _tabContents = <Widget>[
       const DashboardView(),
       SubjectsView(),
@@ -31,6 +34,7 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     Get.delete<ProgressController>();
+    Get.delete<SubjectsController>();
     super.onClose();
   }
 }
