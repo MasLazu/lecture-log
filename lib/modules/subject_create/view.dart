@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:lecture_log/core/theme/styles.dart';
+import 'package:lecture_log/modules/subject_create/controller.dart';
 
 class SujectCeateView extends StatelessWidget {
-  const SujectCeateView({super.key});
+  SujectCeateView({super.key});
+
+  final controller = Get.find<SubjectCreateController>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +40,9 @@ class SujectCeateView extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(height: 4),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: controller.name,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Subject name',
                   ),
@@ -93,20 +97,6 @@ class SujectCeateView extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Description',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const SizedBox(height: 4),
-                const TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(16),
-                    border: OutlineInputBorder(),
-                    hintText: 'Subject description',
-                  ),
-                  maxLines: 3,
-                ),
-                const SizedBox(height: 16),
-                Text(
                   'Day',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
@@ -143,7 +133,9 @@ class SujectCeateView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    controller.day = value!;
+                  },
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -165,7 +157,7 @@ class SujectCeateView extends StatelessWidget {
                               );
                             },
                           );
-                          print(picked?.format(context) ?? 'null');
+                          controller.start.value = picked;
                         },
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all(
@@ -179,7 +171,11 @@ class SujectCeateView extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(
                               Styles.secondaryBackgroundColor),
                         ),
-                        child: const Text("08:00"),
+                        child: Obx(
+                          () => Text(
+                            controller.formatTime(controller.start.value),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -198,7 +194,7 @@ class SujectCeateView extends StatelessWidget {
                               );
                             },
                           );
-                          print(picked?.format(context) ?? 'null');
+                          controller.end.value = picked;
                         },
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all(
@@ -212,7 +208,10 @@ class SujectCeateView extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(
                               Styles.secondaryBackgroundColor),
                         ),
-                        child: const Text("08:00"),
+                        child: Obx(
+                          () =>
+                              Text(controller.formatTime(controller.end.value)),
+                        ),
                       ),
                     ),
                   ],
@@ -223,11 +222,27 @@ class SujectCeateView extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(height: 4),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: controller.location,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Subject location',
                   ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'Description',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                const SizedBox(height: 4),
+                TextField(
+                  controller: controller.description,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.all(16),
+                    border: OutlineInputBorder(),
+                    hintText: 'Subject description',
+                  ),
+                  maxLines: 3,
                 ),
                 const SizedBox(height: 32),
                 SizedBox(
@@ -240,8 +255,18 @@ class SujectCeateView extends StatelessWidget {
                       backgroundColor:
                           MaterialStateProperty.all(Styles.primaryColor),
                     ),
-                    onPressed: () {},
-                    child: const Text("Create"),
+                    onPressed: controller.create,
+                    child: Obx(() {
+                      return controller.isLoading.value
+                          ? const SizedBox(
+                              height: 24,
+                              width: 24,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Text('Create');
+                    }),
                   ),
                 ),
               ],

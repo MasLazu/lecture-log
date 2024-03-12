@@ -42,7 +42,8 @@ class SubjectsView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Styles.primaryColor,
         onPressed: () {
-          Get.toNamed(RouteNames.createSubject);
+          Get.toNamed(RouteNames.createSubject)!
+              .then((_) => controller.fetchSubjects());
         },
         child: const Icon(
           Iconsax.add_outline,
