@@ -2,23 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:lecture_log/core/theme/styles.dart';
+import 'package:lecture_log/data/model/subject.dart';
 import 'package:lecture_log/routes/route_names.dart';
 
 class SubjectOverview extends StatelessWidget {
-  final String name;
-  final DateTimeRange time;
-  final IconData icon;
-  final Color color;
+  final Subject subject;
 
   const SubjectOverview({
     super.key,
-    required this.name,
-    required this.time,
-    required this.icon,
-    required this.color,
+    required this.subject,
   });
 
-  String getDayName(DateTime date) {
+  String getDayName(int day) {
     List<String> daysOfWeek = [
       'Monday',
       'Tuesday',
@@ -28,10 +23,10 @@ class SubjectOverview extends StatelessWidget {
       'Saturday',
       'Sunday'
     ];
-    return daysOfWeek[date.weekday - 1];
+    return daysOfWeek[day];
   }
 
-  String formatTime(DateTime time) {
+  String formatTime(TimeOfDay time) {
     String hour = time.hour.toString().padLeft(2, '0');
     String minute = time.minute.toString().padLeft(2, '0');
     return '$hour:$minute';
@@ -56,11 +51,11 @@ class SubjectOverview extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color: color,
+                    color: subject.color,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(
-                    icon,
+                  child: const Icon(
+                    Iconsax.clipboard_bold,
                     color: Colors.white,
                     size: 18,
                   ),
@@ -74,19 +69,19 @@ class SubjectOverview extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              name,
+              subject.name,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 28),
             Text(
-              getDayName(time.start),
+              getDayName(subject.day),
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 2),
             Text(
-              '${formatTime(time.start)} - ${formatTime(time.end)}',
+              '${formatTime(subject.start)} - ${formatTime(subject.end)}',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],

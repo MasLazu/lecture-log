@@ -26,6 +26,7 @@ class FlectureLog extends StatelessWidget {
       theme: AppTheme().theme,
       getPages: route,
       initialRoute: RouteNames.home,
+      themeMode: ThemeMode.dark,
     );
   }
 }
