@@ -43,7 +43,7 @@ class SubjectsView extends StatelessWidget {
         backgroundColor: Styles.primaryColor,
         onPressed: () {
           Get.toNamed(RouteNames.createSubject)!
-              .then((_) => controller.fetchSubjects());
+              .then((_) => controller.reFetch());
         },
         child: const Icon(
           Iconsax.add_outline,

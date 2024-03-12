@@ -18,6 +18,6 @@ class SubjectsController extends GetxController {
 
   Future<void> reFetch() async {
     subjects.clear();
-    subjects.addAll(await _subjectRepository.getAll());
+    await fetchSubjects();
   }
 }
