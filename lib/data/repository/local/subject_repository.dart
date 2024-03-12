@@ -1,25 +1,9 @@
 import 'package:lecture_log/core/database/database_service.dart';
+import 'package:lecture_log/core/database/table_names.dart';
 import 'package:lecture_log/data/model/subject.dart';
-import 'package:sqflite/sqflite.dart';
 
 class SubjectRepository {
-  final tableName = 'subjects';
-
-  Future<void> createTable(Database db) async {
-    await db.execute('''
-      CREATE TABLE $tableName (
-        id INTEGER,
-        name TEXT NOT NULL,
-        description TEXT,
-        day int NOT NULL,
-        start TEXT NOT NULL,
-        end TEXT NOT NULL,
-        location TEXT NOT NULL,
-        color int NOT NULL,
-        PRIMARY KEY (id AUTOINCREMENT)
-      )
-    ''');
-  }
+  final tableName = TableNames.subject;
 
   Future<int> insert(Subject subject) async {
     return await (await DatabaseService().database)

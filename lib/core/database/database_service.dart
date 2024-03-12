@@ -1,11 +1,10 @@
-import 'package:get/get.dart';
-import 'package:lecture_log/data/repository/local/note_repository.dart';
-import 'package:lecture_log/data/repository/local/subject_repository.dart';
+import 'package:lecture_log/core/database/migration.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseService {
   static Database? _database;
+  Migration? migration;
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -16,14 +15,15 @@ class DatabaseService {
 
   Future<Database> _initDB() async {
     String path = join(await getDatabasesPath(), 'lecture_log.db');
+    migration = Migration();
 
     return await openDatabase(
       path,
-      version: 1,
+      version: migration!.version,
       singleInstance: true,
-      onCreate: (Database db, int version) async {
-        Get.find<SubjectRepository>().createTable(db);
-        Get.find<NoteRepository>().createTable(db);
+      onUpgrade: (db, oldVersion, newVersion) {
+        migration!.migrate(db, oldVersion, newVersion);
+        migration = null;
       },
     );
   }
